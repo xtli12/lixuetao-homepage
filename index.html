@@ -3,8 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>李雪涛 · 个人主页 | 多模态大模型 · 具身智能 · VLA</title>
-<meta name="description" content="李雪涛，武汉大学计算机学院电子信息（具身智能）博士在读，专注多模态大模型、具身智能与视觉-语言-动作(VLA)机器人算法研究。" />
+<title>李雪涛 · 个人主页 | 多模态大模型 · 具身智能 · VLA 机器人算法</title>
+<meta name="description" content="李雪涛，武汉大学计算机学院电子信息（具身智能）博士在读，专注多模态大模型、具身智能与视觉-语言-动作(VLA)人形机器人算法。一作/共一发表 AAAI、ICML、RSS、ICRA 等顶会顶刊 9 篇，CVPR ManiSkill 国际具身赛事多项冠军。" />
+<meta name="keywords" content="李雪涛,武汉大学,具身智能,多模态大模型,VLA,人形机器人,机器人算法工程师,博士" />
+<meta name="author" content="李雪涛 Li Xuetao" />
+<link rel="canonical" href="https://xtli12.github.io/lixuetao-homepage/" />
+<meta name="theme-color" content="#0b1020" />
+<meta name="robots" content="index, follow" />
+
+<!-- 社交分享预览（微信/微博/Twitter 等） -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="李雪涛 · 个人主页 | 多模态大模型 · 具身智能 · VLA" />
+<meta property="og:description" content="武汉大学具身智能博士在读，专注多模态大模型与 VLA 人形机器人算法。一作/共一顶会顶刊 9 篇，CVPR ManiSkill 国际赛事多项冠军。" />
+<meta property="og:url" content="https://xtli12.github.io/lixuetao-homepage/" />
+<meta property="og:site_name" content="李雪涛个人主页" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="李雪涛 · 个人主页 | 多模态大模型 · 具身智能 · VLA" />
+<meta name="twitter:description" content="武汉大学具身智能博士在读，专注多模态大模型与 VLA 人形机器人算法。" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236c8cff'/%3E%3Cstop offset='0.5' stop-color='%2344d7c4'/%3E%3Cstop offset='1' stop-color='%23b07cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='52%25' font-size='34' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'%3E李%3C/text%3E%3C/svg%3E" />
 <style>
   :root {
     --bg: #0b1020;
@@ -22,7 +40,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
     background: var(--bg);
@@ -63,8 +81,9 @@
   .brand { font-weight: 700; font-size: 18px; letter-spacing: 0.5px; }
   .brand span { color: var(--accent); }
   .nav-links { display: flex; gap: 26px; }
-  .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; position: relative; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
   .menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 22px; cursor: pointer; }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
@@ -207,6 +226,31 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* Scroll progress bar */
+  #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 60; background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3)); transition: width 0.1s linear; }
+
+  /* Back to top */
+  #toTop {
+    position: fixed; right: 24px; bottom: 24px; z-index: 60;
+    width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--card-border);
+    background: rgba(17,24,49,0.85); backdrop-filter: blur(8px); color: var(--text);
+    font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, border-color 0.2s; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  #toTop.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  #toTop:hover { border-color: var(--accent); }
+
+  @media print {
+    .bg-orbs, nav, #toTop, #progress, .cta-row, .pub-filters, .menu-btn { display: none !important; }
+    body { background: #fff; color: #111; }
+    .card, .pub, .stat { border-color: #ddd; background: #fff; box-shadow: none; }
+    .grad, .num, .sec-title, h1 { -webkit-text-fill-color: initial; color: #1a2a6c !important; }
+    a { color: #1a2a6c; }
+    section { padding: 20px 0; page-break-inside: avoid; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
   /* Responsive */
   @media (max-width: 880px) {
     .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -223,11 +267,15 @@
 </head>
 <body>
 
+<div id="progress"></div>
+
 <div class="bg-orbs">
   <div class="orb a"></div>
   <div class="orb b"></div>
   <div class="orb c"></div>
 </div>
+
+<button id="toTop" aria-label="返回顶部">↑</button>
 
 <nav>
   <div class="nav-inner">
@@ -260,6 +308,7 @@
       <div class="cta-row">
         <a class="btn btn-primary" href="#publications">📄 查看学术成果</a>
         <a class="btn btn-ghost" href="mailto:xtli312@whu.edu.cn">✉ 联系我</a>
+        <button class="btn btn-ghost" onclick="window.print()">🖨 打印 / 存为 PDF</button>
       </div>
     </div>
     <div class="avatar-wrap">
@@ -509,6 +558,37 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Scroll progress bar + back-to-top
+  const progress = document.getElementById('progress');
+  const toTop = document.getElementById('toTop');
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+    toTop.classList.toggle('show', h.scrollTop > 600);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll-spy: highlight active nav link
+  const sections = [...document.querySelectorAll('section[id], header.hero')];
+  const navMap = {};
+  document.querySelectorAll('#navlinks a').forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    if (id) navMap[id] = a;
+  });
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        Object.values(navMap).forEach(a => a.classList.remove('active'));
+        if (navMap[id]) navMap[id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => { if (s.id) spy.observe(s); });
 </script>
 
 </body>
